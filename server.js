@@ -10,6 +10,11 @@ app.get('/config', function(req,res){
     })
 });
 
+app.use(express.static(__dirname + '/client/build/'));
+app.get('*', function(req,res){
+    res.sendFile(__dirname + '/client/build/index.html')
+  })
+
 
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, function(){
